@@ -6,9 +6,11 @@ From http://163.20.160.14/, we crawled hundreds of thousands of Chinese characte
 
 You can download data from [here](https://drive.google.com/file/d/1LeLbQGhCFLYJakQIjioZh4D9bD2izBSN/view?usp=sharing).  
 
-You can download data **with calligraphers infomation** from [here](https://drive.google.com/file/d/1LeLbQGhCFLYJakQIjioZh4D9bD2izBSN/view?usp=sharing).  
+You can download data **with calligraphers infomation** from [here](https://drive.google.com/file/d/1XznQ_wCSU3QvxnT5W5LeCZw4uF92FOcU/view?usp=sharing).  
 
 ## Usage  
+
+> We write dataloader for dataset without calligrapher infomation.  
 
 - Download data using the links above.
 - Unzip the dataset in the `data` folder, which is in the same directory as `dataset-tf.py` and `dataset-pytorch.py`. The directory tree should be:
