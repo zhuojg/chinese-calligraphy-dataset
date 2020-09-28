@@ -79,7 +79,7 @@ if __name__ == '__main__':
     sample_batch_num = 4
 
     dataset = CalligraphyDataset(
-        data_dir='./data/character/', 
+        data_dir='./data/chinese-calligraphy-dataset/', 
         character_csv='./data/label_character.csv', 
         # transform=torchvision.transforms.Compose([ToTensor()])    # uncomment this line to transform numpy to tensor
     )

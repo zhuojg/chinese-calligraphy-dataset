@@ -70,7 +70,7 @@ if __name__ == '__main__':
 
     batch_size = 8
     sample_batch_num = 4
-    dataset = CalligraphyDataset(data_dir='./data/character/',
+    dataset = CalligraphyDataset(data_dir='./data/chinese-calligraphy-dataset/',
                               character_csv='./data/label_character.csv',
                               batch_size=8,
                               repeat=False,
@@ -90,4 +90,3 @@ if __name__ == '__main__':
             plt.imshow(img[i])
         
     plt.show()
-
