@@ -11,29 +11,28 @@ class CalligraphyDataset:
         img = tf.image.rgb_to_grayscale(img)
         img = tf.image.resize_with_pad(img, target_height=140, target_width=140)
         
-        type_writer = tf.strings.split(file_path, os.sep)[-3]
         character = tf.strings.split(file_path, os.sep)[-2]
         
-        return img, type_writer, character
+        return img, character
 
-    def _get_embedding(self, character_csv, writer_csv):
+    def _get_embedding(self, character_csv):
         characters = {}
-        writers = {}
-
-        with open(writer_csv, 'r', encoding='utf-8') as f:
-            for line in f.readlines():
-                writers[line.split(',')[0]] = int(line.split(',')[1])
 
         with open(character_csv, 'r', encoding='utf-8') as f:
             for line in f.readlines():
                 characters[line.split(',')[0]] = int(line.split(',')[1])
 
-        return characters, writers
+        return characters
 
 
-    def __init__(self, data_dir, character_csv, writer_csv, batch_size=1, repeat=True, shuffle=True, shuffle_buffer_size=32):
+    def __init__(self, data_dir, character_csv, batch_size=1, repeat=True, shuffle=True, shuffle_buffer_size=32):
         data_dir = pathlib.Path(data_dir)
-        list_ds = tf.data.Dataset.list_files(str(data_dir/'*/*/*'))
+        list_ds = tf.data.Dataset.list_files(str(data_dir/'*/*.jpg'))
+
+        self.length = len(list_ds)
+        self.class_num = len(os.listdir(data_dir))
+        print('Found %d images in %d classes.' % (self.length, self.class_num))
+
         labeled_ds = list_ds.map(self._process_path)
 
         dataset = labeled_ds
@@ -48,17 +47,19 @@ class CalligraphyDataset:
         
         self.dataset = dataset.as_numpy_iterator()
 
-        self.characters, self.writers = self._get_embedding(character_csv, writer_csv)
+        self.characters = self._get_embedding(character_csv)
+
+    def __len__(self):
+        return self.length
 
     def next(self):
-        (img, characters, writer_types) = self.dataset.next()
+        (img, characters) = self.dataset.next()
 
-        characters = np.array([item.decode('utf-8') for item in characters])
-        writer_types = np.array([item.decode('utf-8') for item in writer_types])
+        characters = np.array([self.characters[item.decode('utf-8')] for item in characters])
 
-        return (img, characters, writer_types)
+        return (img, characters)
         
 
 if __name__ == '__main__':
-    data = CalligraphyDataset(data_dir='./data/chenzhongjian/sample/', character_csv='./data/label_character.csv', writer_csv='./data/label_writer.csv', batch_size=8, repeat=False, shuffle=False)
+    data = CalligraphyDataset(data_dir='./data/character/', character_csv='./data/label_character.csv', batch_size=8, repeat=False, shuffle=False)
     print(data.next())
