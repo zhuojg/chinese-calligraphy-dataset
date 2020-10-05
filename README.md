@@ -2,15 +2,22 @@
 
 ## Introduction  
 
-From http://163.20.160.14/, we crawled hundreds of thousands of Chinese characters pictures written by different calligraphers.  
+We collected 138,499 images of Chinese calligraphy characters written by 19 calligraphers from the Internet, which covers 7328 different characters in total.
 
-You can download data from [here](https://drive.google.com/file/d/1LeLbQGhCFLYJakQIjioZh4D9bD2izBSN/view?usp=sharing).  
+As seen in the following figures, most characters have less than 40 different images and the images sizes also vary. You can see the code for a simple EDA in `eda.ipynb` notebook.
 
-You can download data **with calligraphers infomation** from [here](https://drive.google.com/file/d/1XznQ_wCSU3QvxnT5W5LeCZw4uF92FOcU/view?usp=sharing).  
+<img width="522" alt="Screen Shot 2020-10-05 at 9 57 13 AM" src="https://user-images.githubusercontent.com/595772/95088889-80a34200-06f1-11eb-9778-1942de0e3287.png">
+
+<img width="503" alt="Screen Shot 2020-10-05 at 10 01 40 AM" src="https://user-images.githubusercontent.com/595772/95089159-ce1faf00-06f1-11eb-8a83-48cf66ff5ba8.png">
+
+We have prepared two datasets:
+1. The first dataset has a folder for each character (JPG). You can download the data from [here](https://drive.google.com/file/d/1LeLbQGhCFLYJakQIjioZh4D9bD2izBSN/view?usp=sharing) (674M).  
+
+2. The second dataset separates images according to each calligrapher (GIF). You can download data with calligraphers information from [here](https://drive.google.com/file/d/1XznQ_wCSU3QvxnT5W5LeCZw4uF92FOcU/view?usp=sharing) (167M).  
 
 ## Usage  
 
-> We write dataloader for dataset without calligrapher infomation.  
+We have created the dataloader for both Tensorflow 2 and PyTorch to facilitate image analysis. You can run the code as follows:
 
 - Download data using the links above.
 - Unzip the dataset in the `data` folder, which is in the same directory as `dataset-tf.py` and `dataset-pytorch.py`. The directory tree should be:
@@ -33,7 +40,7 @@ You can download data **with calligraphers infomation** from [here](https://driv
 
 - TensorFlow 2.3  
 
-> The same code is in the `dataset-tf.py`, you can run `python dataset-tf.py` to see the results.  
+The same code is in the `dataset-tf.py`, you can run `python dataset-tf.py` to see the results.  
 
 ```python
 from dataset-tf import CalligraphyDataset
