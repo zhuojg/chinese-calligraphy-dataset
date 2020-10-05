@@ -4,7 +4,7 @@
 
 We collected 138,499 images of Chinese calligraphy characters written by 19 calligraphers from the Internet, which cover 7328 different characters in total.
 
-As seen in the following figures, most characters have less than 40 different images and the images sizes also vary. You can see the code for a simple EDA in `eda.ipynb` notebook.
+As seen in the following figures, most characters have less than 40 different images and the image sizes also vary a lot. You can see the code for a simple EDA in `eda.ipynb` notebook.
 
 <img width="522" alt="Screen Shot 2020-10-05 at 9 57 13 AM" src="https://user-images.githubusercontent.com/595772/95088889-80a34200-06f1-11eb-9778-1942de0e3287.png">
 
