@@ -49,16 +49,20 @@ dataset = CalligraphyDataset(data_dir='./data/chinese-calligraphy-dataset/',
 
 plt.figure()
 plt.rcParams['font.sans-serif']=['SimHei']
-for i_batch in range(sample_batch_num):
-    img, character = dataset.next()
 
-    print(i_batch, img.shape, character.shape)
+for i_batch, (images, labels) in enumerate(dataset.dataset):
+    if i_batch >= sample_batch_num:
+        break
 
-    for i in range(img.shape[0]):
+    labels = np.array([dataset.characters[item.numpy().decode('utf-8')] for item in labels])
+    images = images.numpy()
+    print(i_batch, images.shape, labels.shape)
+
+    for i in range(images.shape[0]):
         ax = plt.subplot(sample_batch_num, batch_size, i_batch * batch_size + i + 1)
         ax.axis('off')
-        ax.set_title(list(dataset.characters.keys())[character[i]])
-        plt.imshow(img[i])
+        ax.set_title(list(dataset.characters.keys())[labels[i]])
+        plt.imshow(images[i])
 
 plt.show()
 ```
