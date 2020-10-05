@@ -28,6 +28,7 @@ class CalligraphyDataset(torch.utils.data.Dataset):
         self.target_size = target_size
         self.transform = transform
 
+        # read embedding file from character_csv
         self.characters = {}
         with open(character_csv, 'r', encoding='utf-8') as f:
             for line in f.readlines():
@@ -42,13 +43,17 @@ class CalligraphyDataset(torch.utils.data.Dataset):
 
         img_path = self.images_list[idx]
         image = io.imread(img_path).astype(np.int)
+
+        # convert black pixels to white and white piexels to black
+        # 
+        # in the original calligraphy, the character is black
+        # but we want pixels of character to contain information
         image = np.absolute(image - 255).astype(np.uint8)
 
         # resize image
         # we need to keep the ratio of the original image
         x, y = image.shape
         canva_size = max(self.target_size, x, y)
-
         # we need to put the image in the middle of the canva
         top = int((canva_size - x) / 2)
         left = int((canva_size - y) / 2)
@@ -64,6 +69,7 @@ class CalligraphyDataset(torch.utils.data.Dataset):
         character = np.array(self.characters[character])
         character = character[np.newaxis]
 
+        # return as a dict
         sample = {'image': image, 'character': character}
 
         if self.transform:
