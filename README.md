@@ -11,9 +11,9 @@ As seen in the following figures, most characters have less than 40 different im
 <img width="503" alt="Screen Shot 2020-10-05 at 10 01 40 AM" src="https://user-images.githubusercontent.com/595772/95089159-ce1faf00-06f1-11eb-8a83-48cf66ff5ba8.png">
 
 We have prepared two datasets:
-1. The first dataset has a folder for each character (JPG). You can download the dataset from [here](https://drive.google.com/file/d/1LeLbQGhCFLYJakQIjioZh4D9bD2izBSN/view?usp=sharing) (674M).  
+1. The first dataset has a folder for each character (JPG). You can download the dataset from [here](https://drive.google.com/file/d/1k849yUZhkUfbupZT0kRR2ZzZj5g89yLw/view?usp=sharing) (747M).  
 
-2. The second dataset separates images according to each calligrapher (GIF). You can download the dataset from [here](https://drive.google.com/file/d/1XznQ_wCSU3QvxnT5W5LeCZw4uF92FOcU/view?usp=sharing) (167M).  
+2. The second dataset separates images according to each calligrapher (GIF). You can download the dataset from [here](https://drive.google.com/file/d/10QJrw0Qdk4O1bIrehCLmdiCkwpLbGVe8/view?usp=sharing) (289M).  
 
 ## Usage  
 
